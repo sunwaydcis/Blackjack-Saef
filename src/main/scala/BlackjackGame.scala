@@ -16,9 +16,11 @@ class BlackjackGame {
     println(s"Dealer's hand: ${dealer.hand.getCards.head}, [Hidden Card]")
 
     player.playTurn(deck)
-    dealer.playTurn(deck)
-
-    determineWinner()
+    if (player.hand.value > 21) {
+      println("Player busts! Dealer wins.")
+    } else {
+      dealer.playTurn(deck)
+      determineWinner()
   }
   
   def determineWinner(): Unit = {

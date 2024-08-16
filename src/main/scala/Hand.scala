@@ -17,6 +17,8 @@ class Hand {
     val total = values.sum
     if (total > 21 && cards.exists(_.rank == "Ace")) total - 10 else total
   }
-
+  
+  def getCards: List[Card] = cards
+  
   override def toString: String = cards.mkString(", ")
 }

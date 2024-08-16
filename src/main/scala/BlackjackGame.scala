@@ -12,9 +12,11 @@ class BlackjackGame {
 
     // Show player's hand
     println(s"Player's hand: ${player.hand}")
-    
     // Show both of the dealer's cards
     println(s"Dealer's hand: ${dealer.hand}")
+
+    player.playTurn(deck)
+    dealer.playTurn(deck)
 
     determineWinner()
   }

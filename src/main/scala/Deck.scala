@@ -1,4 +1,3 @@
-// Deck.scala
 import scala.util.Random
 
 class Deck {

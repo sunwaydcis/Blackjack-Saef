@@ -15,5 +15,13 @@ class BlackjackGame {
     
     // Show both of the dealer's cards
     println(s"Dealer's hand: ${dealer.hand}")
+
+    determineWinner()
+  }
+  def determineWinner(): Unit = {
+    if (player.hand.value > 21) println("Player busts! Dealer wins.")
+    else if (dealer.hand.value > 21 || player.hand.value > dealer.hand.value) println("Player wins!")
+    else if (player.hand.value == dealer.hand.value) println("It's a tie!")
+    else println("Dealer wins!")
   }
 }

@@ -16,13 +16,16 @@ class BlackjackGame {
     println(s"Dealer's hand: ${dealer.hand.getCards.head}, [Hidden Card]")
 
     player.playTurn(deck)
+
+    // Check if the player has busted
     if (player.hand.value > 21) {
       println("Player busts! Dealer wins.")
     } else {
       dealer.playTurn(deck)
       determineWinner()
+    }
   }
-  
+
   def determineWinner(): Unit = {
     val playerValue = player.hand.value
     val dealerValue = dealer.hand.value

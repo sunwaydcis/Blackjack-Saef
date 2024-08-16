@@ -36,5 +36,20 @@ class HumanPlayer(name: String) extends Player(name) {
 
 class Dealer extends Player("Dealer") {
   override def playTurn(deck: Deck): Unit = {
+    println(s"Dealer's turn...")
+
+    while (hand.value <= 16) {
+      println(s"Dealer's hand: ${hand} (Value: ${hand.value})")
+      println("Dealer hits.")
+      hand.addCard(deck.dealCard().get)
+      println(s"Dealer's hand after hit: ${hand} (Value: ${hand.value})")
+    }
+
+    println(s"Dealer's final hand: ${hand} (Value: ${hand.value})")
+    if (hand.value >= 17 && hand.value <= 21) {
+      println("Dealer stands.")
+    } else if (hand.value > 21) {
+      println(s"Dealer busts. Value of their hand: ${hand.value}.")
+    }
   }
 }

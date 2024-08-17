@@ -1,1 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.makery.blackjack.controller.HowToPlayController">
+   <children>
+      <ImageView fitHeight="550.0" fitWidth="800.0" pickOnBounds="true">
+         <image>
+            <Image url="@/images/black-screen_39.png" />
+         </image>
+      </ImageView>
+      <TextArea layoutX="13.0" layoutY="16.0" prefHeight="500.0" prefWidth="770.0" text="Number cards (2-10): Face value.&#10;Face cards (King, Queen, Jack): 10 &#10;Aces: 1 or 11, depending on which value benefits the hand most.&#10;&#10;Gameplay:&#10;Initial Deal: Each player is dealt two cards, and the dealer receives two cards (one face-up, one face-down).&#10;Player's Turn:&#10;Hit: Draw another card &#10;Stand: Keep your current hand and end your turn.&#10;Dealer's Turn:&#10;The dealer reveals the face-down card.&#10;The dealer must draw cards (hit) until their hand totals at least 17 points.&#10;&#10;Winning:&#10;Blackjack: If your draw a 21 you have a &quot;Blackjack&quot; and win 2x your bet unless the dealer also has a Blackjack, &#10;resulting in a tie &#10;Beat the Dealer: If your hand is closer to 21 than the dealer's without exceeding 21, you win 2x your bet&#10;Bust: If your hand exceeds 21, you lose automatically, regardless of the dealer's hand.&#10;Dealer Bust: If the dealer’s hand exceeds 21, all players who have not busted win.&#10;&#10;Ties (Pushes):&#10;If both you and the dealer have the same hand value, it's a tie, and your bet is returned." />
+      <Button fx:id="mainMenuButton" layoutX="320.0" layoutY="500.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="146.0" text="Main Menu" />
+   </children>
+</AnchorPane>

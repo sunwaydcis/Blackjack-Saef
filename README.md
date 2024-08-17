@@ -1,1 +1,1 @@
-For final assignment -add more later i guess-
+Update - Encountered many issues yesterday afternoon trying to create a gui to compliment my already existing logic code. Decided to start from scratch and design the gui first. So far completed the main menu and how to play scenes, will now work on the game scene

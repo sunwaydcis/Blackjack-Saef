@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="550.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.makery.blackjack.controller.GameController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#21861e" height="550.0" stroke="BLACK" strokeType="INSIDE" width="800.0" />
+      <Label layoutX="127.0" layoutY="6.0" prefHeight="18.0" prefWidth="70.0" text="Player">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d4282e" height="96.0" layoutY="454.0" stroke="BLACK" strokeType="INSIDE" width="800.0" />
+      <Button layoutX="48.0" layoutY="480.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="97.0" text="Hit" />
+      <Label layoutX="487.0" layoutY="6.0" prefHeight="18.0" prefWidth="70.0" text="Dealer">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Button fx:id="quitGameButton" layoutX="687.0" layoutY="35.0" mnemonicParsing="false" text="Quit Game" />
+      <Button layoutX="197.0" layoutY="480.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="98.0" text="Stand" />
+      <Button layoutX="351.0" layoutY="480.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="98.0" text="Place Bet" />
+      <Button layoutX="501.0" layoutY="480.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="98.0" text="Bet 1" />
+      <Button layoutX="646.0" layoutY="480.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="98.0" text="Bet 10" />
+      <Label layoutX="599.0" layoutY="418.0" prefHeight="18.0" prefWidth="70.0" text="Credit:">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="365.0" layoutY="418.0" prefHeight="18.0" prefWidth="70.0" text="Bet:">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label layoutX="110.0" layoutY="418.0" prefHeight="18.0" prefWidth="70.0" text="Win:">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="playerCard1" fitHeight="177.0" fitWidth="116.0" layoutX="68.0" layoutY="61.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="playerCard2" fitHeight="177.0" fitWidth="116.0" layoutX="97.0" layoutY="85.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="dealerHiddenCard" fitHeight="177.0" fitWidth="116.0" layoutX="400.0" layoutY="62.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/card back red.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="playerCard3" fitHeight="177.0" fitWidth="116.0" layoutX="126.0" layoutY="134.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="playerCard4" fitHeight="177.0" fitWidth="116.0" layoutX="155.0" layoutY="177.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="playerCard5" fitHeight="177.0" fitWidth="116.0" layoutX="188.0" layoutY="229.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="dealerShownCard2" fitHeight="177.0" fitWidth="116.0" layoutX="429.0" layoutY="85.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="dealerShownCard3" fitHeight="177.0" fitWidth="116.0" layoutX="458.0" layoutY="134.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="dealerHiddenCardExposed" fitHeight="177.0" fitWidth="116.0" layoutX="400.0" layoutY="60.0" pickOnBounds="true" preserveRatio="true" visible="false" />
+      <ImageView fx:id="dealerShownCard4" fitHeight="177.0" fitWidth="116.0" layoutX="487.0" layoutY="177.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="dealerShownCard5" fitHeight="177.0" fitWidth="116.0" layoutX="516.0" layoutY="229.0" pickOnBounds="true" preserveRatio="true" />
+      <Label layoutX="647.0" layoutY="98.0" prefHeight="35.0" prefWidth="138.0" text="PLAYER WINS!" visible="false">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <Label layoutX="638.0" layoutY="156.0" prefHeight="35.0" prefWidth="146.0" text="DEALER WINS! :(" visible="false">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

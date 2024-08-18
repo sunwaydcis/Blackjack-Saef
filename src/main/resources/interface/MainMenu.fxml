@@ -23,4 +23,3 @@
       <Button fx:id="StartGameButton1" layoutX="450.0" layoutY="500.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="138.0" text="How To Play" />
    </children>
 </AnchorPane>
-

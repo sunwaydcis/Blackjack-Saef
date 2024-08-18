@@ -1,0 +1,91 @@
+package ch.makery.blackjack.controller
+
+import ch.makery.blackjack.logic.{Card, Deck}
+import scalafx.Includes._
+import scalafx.scene.control.Button
+import scalafx.scene.image.{Image, ImageView}
+import scalafx.scene.Scene
+import scalafxml.core.{FXMLView, NoDependencyResolver}
+import scalafx.stage.Stage
+import scalafx.scene.layout.AnchorPane
+import scalafxml.core.macros.sfxml
+
+@sfxml
+class GameController(val quitGameButton: Button,
+                     val playerCard1: ImageView,
+                     val playerCard2: ImageView,
+                     val dealerShownCard2: ImageView,
+                     val dealerHiddenCard: ImageView) {
+
+  private var deck: Deck = _
+  private var playerCards: List[Card] = List()
+  private var dealerCards: List[Card] = List()
+
+  def startNewGame(): Unit = {
+    deck = new Deck()
+    deck.shuffle()
+    dealCards()
+  }
+
+  def dealCards(): Unit = {
+    playerCards = deck.dealMultipleCards(2)
+    dealerCards = List(deck.dealOneCard(), deck.dealOneCard()) 
+
+    setImageToImageView(playerCard1, playerCards(0).imagePath)
+    setImageToImageView(playerCard2, playerCards(1).imagePath)
+    setImageToImageView(dealerShownCard2, dealerCards(0).imagePath)
+    setImageToImageView(dealerHiddenCard, "card back red.png")
+
+    printHandValues()
+  }
+
+  def calculateHandValue(cards: List[Card]): Int = {
+    var sum = 0
+    var aceCount = 0
+
+    for (card <- cards) {
+      sum += card.value
+      if (card.value == 11) aceCount += 1
+    }
+
+    while (sum > 21 && aceCount > 0) {
+      sum -= 10
+      aceCount -= 1
+    }
+
+    sum
+  }
+
+  def printHandValues(): Unit = {
+    val playerHandValue = calculateHandValue(playerCards)
+    val dealerHandValue = calculateHandValue(List(dealerCards(0))) 
+
+    println(s"Player's hand value: $playerHandValue")
+    println(s"Dealer's shown card value: $dealerHandValue")
+  }
+
+  def setImageToImageView(imageView: ImageView, imagePath: String): Unit = {
+    val imageResource = getClass.getResourceAsStream(s"/images/$imagePath")
+    if (imageResource == null) {
+      throw new RuntimeException(s"Image resource not found: /images/$imagePath")
+    } else {
+      imageView.image = new Image(imageResource)
+    }
+  }
+
+  quitGameButton.onAction = handle {
+    val resource = getClass.getResource("/interface/GameOver.fxml")
+    if (resource == null) {
+      throw new RuntimeException("Could not load FXML file for Game Over")
+    }
+
+    val root = FXMLView(resource, NoDependencyResolver)
+    val scalaRoot = new AnchorPane(root.asInstanceOf[javafx.scene.layout.AnchorPane])
+
+    val stage = quitGameButton.getScene.getWindow.asInstanceOf[javafx.stage.Stage]
+    val scalaStage = new Stage(stage)
+    scalaStage.scene = new Scene(scalaRoot, 800, 550)
+  }
+
+  startNewGame()
+}

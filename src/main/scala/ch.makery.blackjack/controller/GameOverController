@@ -22,7 +22,7 @@ class GameOverController(val mainMenuButton: Button, val playAgainButton: Button
       val scalaRoot = new AnchorPane(root.asInstanceOf[javafx.scene.layout.AnchorPane])
 
       val stage = mainMenuButton.getScene.getWindow.asInstanceOf[javafx.stage.Stage]
-      val scalaStage = new Stage(stage) 
+      val scalaStage = new Stage(stage)
       scalaStage.scene = new Scene(scalaRoot, 800, 600)
     } catch {
       case e: Exception =>
@@ -30,3 +30,24 @@ class GameOverController(val mainMenuButton: Button, val playAgainButton: Button
         throw new RuntimeException("Failed to load Main Menu page.", e)
     }
   }
+
+  playAgainButton.onAction = handle {
+    try {
+      val resource = getClass.getResource("/interface/Game.fxml")
+      if (resource == null) {
+        throw new RuntimeException("Could not load FXML file for Game")
+      }
+
+      val root = FXMLView(resource, NoDependencyResolver)
+      val scalaRoot = new AnchorPane(root.asInstanceOf[javafx.scene.layout.AnchorPane])
+
+      val stage = playAgainButton.getScene.getWindow.asInstanceOf[javafx.stage.Stage]
+      val scalaStage = new Stage(stage)
+      scalaStage.scene = new Scene(scalaRoot, 800, 550) // Adjusted size to match Game.fxml
+    } catch {
+      case e: Exception =>
+        e.printStackTrace()
+        throw new RuntimeException("Failed to load Game page.", e)
+    }
+  }
+}

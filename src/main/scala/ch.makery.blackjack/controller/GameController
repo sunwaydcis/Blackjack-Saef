@@ -12,18 +12,33 @@ import scalafxml.core.macros.sfxml
 
 @sfxml
 class GameController(val quitGameButton: Button,
+                     val hitButton: Button,
+                     val standButton: Button,
                      val playerCard1: ImageView,
                      val playerCard2: ImageView,
+                     val playerCard3: ImageView,
+                     val playerCard4: ImageView,
+                     val playerCard5: ImageView,
                      val dealerShownCard2: ImageView,
-                     val dealerHiddenCard: ImageView) {
+                     val dealerShownCard3: ImageView,
+                     val dealerShownCard4: ImageView,
+                     val dealerShownCard5: ImageView,
+                     val dealerHiddenCard: ImageView,
+                     val dealerHiddenCardExposed: ImageView) {
 
   private var deck: Deck = _
   private var playerCards: List[Card] = List()
   private var dealerCards: List[Card] = List()
+  private var playerCardViews: List[ImageView] = _
+  private var dealerCardViews: List[ImageView] = _
 
   def startNewGame(): Unit = {
     deck = new Deck()
     deck.shuffle()
+
+    playerCardView = List(playerCard1, playerCard2, playerCard3, playerCard4, playerCard5)
+    dealerCardView = List(dealerShownCard2, dealerShownCard3, dealerShownCard4, dealerShownCard5)
+
     dealCards()
   }
 
@@ -70,6 +85,20 @@ class GameController(val quitGameButton: Button,
       throw new RuntimeException(s"Image resource not found: /images/$imagePath")
     } else {
       imageView.image = new Image(imageResource)
+    }
+  }
+
+  hitButton.onAction = handle {
+    if (playerCards.size < 5) {
+      val newCard = deck.dealOneCard()
+      playerCards = playerCards :+ newCard
+      setImageToImageView(playerCardView(playerCards.size - 1), newCard.imagePath)
+      printHandValues()
+
+      if (calculateHandValue(playerCards) > 21) {
+        println("Player busts!")
+        endGame()
+      }
     }
   }
 

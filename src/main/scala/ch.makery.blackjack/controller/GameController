@@ -94,13 +94,18 @@ class GameController(val quitGameButton: Button,
       playerCards = playerCards :+ newCard
       setImageToImageView(playerCardView(playerCards.size - 1), newCard.imagePath)
       printHandValues()
-
+  
       if (calculateHandValue(playerCards) > 21) {
         println("Player busts!")
         endGame()
       }
     }
   }
+  
+  standButton.onAction = handle {
+    dealerTurn()
+  }
+
 
   quitGameButton.onAction = handle {
     val resource = getClass.getResource("/interface/GameOver.fxml")

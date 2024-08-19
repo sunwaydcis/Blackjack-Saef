@@ -9,6 +9,8 @@ import scalafxml.core.{FXMLView, NoDependencyResolver}
 import scalafx.stage.Stage
 import scalafx.scene.layout.AnchorPane
 import scalafxml.core.macros.sfxml
+import scalafx.animation.{KeyFrame, Timeline}
+import scalafx.util.Duration
 
 @sfxml
 class GameController(val quitGameButton: Button,
@@ -29,8 +31,8 @@ class GameController(val quitGameButton: Button,
   private var deck: Deck = _
   private var playerCards: List[Card] = List()
   private var dealerCards: List[Card] = List()
-  private var playerCardViews: List[ImageView] = _
-  private var dealerCardViews: List[ImageView] = _
+  private var playerCardView: List[ImageView] = _
+  private var dealerCardView: List[ImageView] = _
 
   def startNewGame(): Unit = {
     deck = new Deck()
@@ -106,8 +108,48 @@ class GameController(val quitGameButton: Button,
     dealerTurn()
   }
 
+  def dealerTurn(): Unit = {
+    setImageToImageView(dealerHiddenCardExposed, dealerCards(1).imagePath)
+    dealerHiddenCardExposed.visible = true
+    dealerHiddenCard.visible = false
 
-  quitGameButton.onAction = handle {
+    println(s"Dealer's hand value: ${calculateHandValue(dealerCards)}")
+
+    val drawActions = dealerCardView.drop(dealerCards.size - 1).zipWithIndex.map { case (cardView, index) =>
+      KeyFrame(Duration(1000 * (index + 1)), onFinished = _ => {
+        if (calculateHandValue(dealerCards) < 17 && dealerCards.size < 5) {
+          val newCard = deck.dealOneCard()
+          dealerCards = dealerCards :+ newCard
+          setImageToImageView(cardView, newCard.imagePath)
+          println(s"Dealer's hand value: ${calculateHandValue(dealerCards)}")
+        }
+      })
+    }
+
+    val dealerDrawsTimeline = new Timeline {
+      keyFrames = drawActions ++ Seq(
+        KeyFrame(Duration(1000 * (dealerCards.size + 1)), onFinished = _ => {
+          val dealerHandValue = calculateHandValue(dealerCards)
+          val playerHandValue = calculateHandValue(playerCards)
+
+          if (dealerHandValue > 21) {
+            println("Dealer busts! Player wins!")
+          } else if (dealerHandValue >= playerHandValue) {
+            println("Dealer wins!")
+          } else {
+            println("Player wins!")
+          }
+
+          endGame()
+        })
+      )
+    }
+
+    dealerDrawsTimeline.play()
+  }
+
+
+  def endGame(): Unit = {
     val resource = getClass.getResource("/interface/GameOver.fxml")
     if (resource == null) {
       throw new RuntimeException("Could not load FXML file for Game Over")
@@ -119,6 +161,10 @@ class GameController(val quitGameButton: Button,
     val stage = quitGameButton.getScene.getWindow.asInstanceOf[javafx.stage.Stage]
     val scalaStage = new Stage(stage)
     scalaStage.scene = new Scene(scalaRoot, 800, 550)
+  }
+
+  quitGameButton.onAction = handle {
+    endGame()
   }
 
   startNewGame()

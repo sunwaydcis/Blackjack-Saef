@@ -17,14 +17,14 @@
          </font>
       </Label>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d4282e" height="96.0" layoutY="454.0" stroke="BLACK" strokeType="INSIDE" width="800.0" />
-      <Button layoutX="48.0" layoutY="480.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="97.0" text="Hit" />
+      <Button fx:id="hitButton" layoutX="48.0" layoutY="480.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="97.0" text="Hit" />
       <Label layoutX="487.0" layoutY="6.0" prefHeight="18.0" prefWidth="70.0" text="Dealer">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
       <Button fx:id="quitGameButton" layoutX="687.0" layoutY="35.0" mnemonicParsing="false" text="Quit Game" />
-      <Button layoutX="197.0" layoutY="480.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="98.0" text="Stand" />
+      <Button fx:id="standButton" layoutX="197.0" layoutY="480.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="98.0" text="Stand" />
       <Button layoutX="351.0" layoutY="480.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="98.0" text="Place Bet" />
       <Button layoutX="501.0" layoutY="480.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="98.0" text="Bet 1" />
       <Button layoutX="646.0" layoutY="480.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="98.0" text="Bet 10" />

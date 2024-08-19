@@ -50,12 +50,12 @@
             <Image url="@../images/card back red.png" />
          </image>
       </ImageView>
+      <ImageView fx:id="dealerHiddenCardExposed" fitHeight="177.0" fitWidth="116.0" layoutX="400.0" layoutY="60.0" pickOnBounds="true" preserveRatio="true" visible="false" />
       <ImageView fx:id="playerCard3" fitHeight="177.0" fitWidth="116.0" layoutX="126.0" layoutY="134.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fx:id="playerCard4" fitHeight="177.0" fitWidth="116.0" layoutX="155.0" layoutY="177.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fx:id="playerCard5" fitHeight="177.0" fitWidth="116.0" layoutX="188.0" layoutY="229.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fx:id="dealerShownCard2" fitHeight="177.0" fitWidth="116.0" layoutX="429.0" layoutY="85.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fx:id="dealerShownCard3" fitHeight="177.0" fitWidth="116.0" layoutX="458.0" layoutY="134.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="dealerHiddenCardExposed" fitHeight="177.0" fitWidth="116.0" layoutX="400.0" layoutY="60.0" pickOnBounds="true" preserveRatio="true" visible="false" />
       <ImageView fx:id="dealerShownCard4" fitHeight="177.0" fitWidth="116.0" layoutX="487.0" layoutY="177.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fx:id="dealerShownCard5" fitHeight="177.0" fitWidth="116.0" layoutX="516.0" layoutY="229.0" pickOnBounds="true" preserveRatio="true" />
       <Label layoutX="647.0" layoutY="98.0" prefHeight="35.0" prefWidth="138.0" text="PLAYER WINS!" visible="false">

@@ -8,6 +8,7 @@ import scalafx.scene.layout.AnchorPane
 
 object MainApp extends JFXApp {
 
+  //loads the fxml file
   val resource = getClass.getResource("/interface/MainMenu.fxml")
   if (resource == null) {
     throw new RuntimeException("Could not load FXML file")
@@ -15,10 +16,11 @@ object MainApp extends JFXApp {
 
   val root = FXMLView(resource, NoDependencyResolver)
 
+  //convert anchorpane from java to scalafx
   val scalaRoot = new AnchorPane(root.asInstanceOf[javafx.scene.layout.AnchorPane])
 
   stage = new PrimaryStage {
-    title = "Main Menu"
-    scene = new Scene(scalaRoot, 800, 550) 
+    title = "HIGH ROLLA BLACKJACK GAMBLER"
+    scene = new Scene(scalaRoot, 800, 550)
   }
 }

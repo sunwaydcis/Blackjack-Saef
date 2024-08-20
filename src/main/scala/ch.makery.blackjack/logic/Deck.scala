@@ -2,31 +2,41 @@ package ch.makery.blackjack.logic
 
 import scala.util.Random
 
+//class for the deck of cards used in the game
 class Deck {
+  private var cards: List[Card] = createDeck()
 
-  private val suits = List("clubs", "diamonds", "hearts", "spades")
-  private val faceValues = List("jack", "queen", "king")
-  private var deck: List[Card] = suits.flatMap { suit =>
-    (2 to 10).map { value =>
-      Card(value, suit, s"${value}_of_$suit.png")
-    } ++ faceValues.map { face =>
-      Card(10, suit, s"${face}_of_$suit.png")
-    } ++ List(Card(11, suit, s"ace_of_$suit.png"))
+  //create the deck for the game
+  private def createDeck(): List[Card] = {
+    val suits = List("Hearts", "Diamonds", "Clubs", "Spades")
+    val ranks = List("2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King", "Ace")
+    for {
+      suit <- suits
+      rank <- ranks
+    } yield {
+      val value = rank match {
+        case "Ace"   => 11
+        case "King" | "Queen" | "Jack" => 10
+        case _       => rank.toInt  // Convert the string rank to an integer value
+      }
+      Card(value, suit, s"${rank}_of_${suit}.png")
+    }
   }
 
+  //shuffles the deck
   def shuffle(): Unit = {
-    deck = Random.shuffle(deck)
+    cards = Random.shuffle(cards)
   }
 
+  //deals cards
   def dealOneCard(): Card = {
-    val card = deck.head
-    deck = deck.tail
+    if (cards.isEmpty) {
+      println("Reshuffling the deck...")
+      cards = createDeck()
+      shuffle()
+    }
+    val card = cards.head
+    cards = cards.tail
     card
-  }
-
-  def dealMultipleCards(number: Int): List[Card] = {
-    val dealtCards = deck.take(number)
-    deck = deck.drop(number)
-    dealtCards
   }
 }

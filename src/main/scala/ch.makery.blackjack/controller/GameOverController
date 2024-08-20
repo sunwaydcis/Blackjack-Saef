@@ -43,7 +43,8 @@ class GameOverController(val mainMenuButton: Button, val playAgainButton: Button
 
       val stage = playAgainButton.getScene.getWindow.asInstanceOf[javafx.stage.Stage]
       val scalaStage = new Stage(stage)
-      scalaStage.scene = new Scene(scalaRoot, 800, 550) 
+      scalaStage.scene = new Scene(scalaRoot, 800, 550)
+
     } catch {
       case e: Exception =>
         e.printStackTrace()

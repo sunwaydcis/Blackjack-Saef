@@ -18,11 +18,11 @@ class HowToPlayController(val mainMenuButton: Button) {
     }
 
     val root = FXMLView(resource, NoDependencyResolver)
-    
+
     val scalaRoot = new AnchorPane(root.asInstanceOf[javafx.scene.layout.AnchorPane])
-    
+
     val stage = mainMenuButton.getScene.getWindow.asInstanceOf[javafx.stage.Stage]
-    val scalaStage = new Stage(stage) 
+    val scalaStage = new Stage(stage)
     scalaStage.scene = new Scene(scalaRoot, 800, 550)
   }
 }

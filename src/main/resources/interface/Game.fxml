@@ -8,7 +8,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="550.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.makery.blackjack.controller.GameController">
+<AnchorPane prefHeight="550.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.192" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ch.makery.blackjack.controller.GameController">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#21861e" height="550.0" stroke="BLACK" strokeType="INSIDE" width="800.0" />
       <Label layoutX="127.0" layoutY="6.0" prefHeight="18.0" prefWidth="70.0" text="Player">
@@ -25,20 +25,15 @@
       </Label>
       <Button fx:id="quitGameButton" layoutX="687.0" layoutY="35.0" mnemonicParsing="false" text="Quit Game" />
       <Button fx:id="standButton" layoutX="197.0" layoutY="480.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="98.0" text="Stand" />
-      <Button layoutX="351.0" layoutY="480.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="98.0" text="Place Bet" />
-      <Button layoutX="501.0" layoutY="480.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="98.0" text="Bet 1" />
-      <Button layoutX="646.0" layoutY="480.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="98.0" text="Bet 10" />
-      <Label layoutX="599.0" layoutY="418.0" prefHeight="18.0" prefWidth="70.0" text="Credit:">
+      <Button fx:id="allInButton" layoutX="351.0" layoutY="480.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="98.0" text="All In" />
+      <Button fx:id="bet1Button" layoutX="501.0" layoutY="480.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="98.0" text="Bet 1" />
+      <Button fx:id="bet10Button" layoutX="646.0" layoutY="480.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="98.0" text="Bet 10" />
+      <Label fx:id="creditLabel" layoutX="464.0" layoutY="418.0" prefHeight="35.0" prefWidth="205.0" text="Credit:">
          <font>
             <Font size="24.0" />
          </font>
       </Label>
-      <Label layoutX="365.0" layoutY="418.0" prefHeight="18.0" prefWidth="70.0" text="Bet:">
-         <font>
-            <Font size="24.0" />
-         </font>
-      </Label>
-      <Label layoutX="110.0" layoutY="418.0" prefHeight="18.0" prefWidth="70.0" text="Win:">
+      <Label fx:id="betLabel" layoutX="114.0" layoutY="418.0" prefHeight="35.0" prefWidth="138.0" text="Bet:">
          <font>
             <Font size="24.0" />
          </font>
@@ -58,14 +53,14 @@
       <ImageView fx:id="dealerShownCard3" fitHeight="177.0" fitWidth="116.0" layoutX="458.0" layoutY="134.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fx:id="dealerShownCard4" fitHeight="177.0" fitWidth="116.0" layoutX="487.0" layoutY="177.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fx:id="dealerShownCard5" fitHeight="177.0" fitWidth="116.0" layoutX="516.0" layoutY="229.0" pickOnBounds="true" preserveRatio="true" />
-      <Label layoutX="647.0" layoutY="98.0" prefHeight="35.0" prefWidth="138.0" text="PLAYER WINS!" visible="false">
+      <Label fx:id="playerWinsLabel" layoutX="605.0" layoutY="98.0" prefHeight="35.0" prefWidth="180.0" text="PLAYER WINS!" visible="false">
          <font>
-            <Font size="20.0" />
+            <Font name="Arial Bold" size="20.0" />
          </font>
       </Label>
-      <Label layoutX="638.0" layoutY="156.0" prefHeight="35.0" prefWidth="146.0" text="DEALER WINS! :(" visible="false">
+      <Label fx:id="dealerWinsLabel" layoutX="604.0" layoutY="156.0" prefHeight="35.0" prefWidth="180.0" text="DEALER WINS! :(" visible="false">
          <font>
-            <Font size="20.0" />
+            <Font name="Arial Bold" size="20.0" />
          </font>
       </Label>
    </children>
